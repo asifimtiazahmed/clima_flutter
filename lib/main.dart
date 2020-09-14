@@ -3,6 +3,8 @@ import 'package:clima/screens/loading_screen.dart';
 
 void main() => runApp(MyApp());
 
+//Will add this to version control
+
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
