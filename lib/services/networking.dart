@@ -12,8 +12,19 @@ class GetData{
     longitude = lon;
     latitude = lat;
 }
+Future getCityData(String cityName) async {
+    String apiUrl = 'http://api.openweathermap.org/data/2.5/weather?q=$cityName&appid=$apiKey&units=metric';
+    http.Response response = await http.get(apiUrl);
+    var statusCode = response.statusCode;
+    if(statusCode == 200){
+      data = response.body;
+    } else{
+      print(statusCode);
+    }
+    return jsonDecode(data);
+}
 
-  Future getData() async {
+Future getData() async {
     String apiUrl = 'http://api.openweathermap.org/data/2.5/weather?lat=$latitude&lon=$longitude&appid=$apiKey&units=metric';
     print(apiUrl);
     http.Response response = await http.get(apiUrl);
